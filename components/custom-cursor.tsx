@@ -3,12 +3,22 @@
 import { useEffect, useState } from "react"
 
 export function CustomCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [position, setPosition] = useState({ x: -100, y: -100 })
   const [isPointer, setIsPointer] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
+    document.body.style.cursor = "none"
+    document.documentElement.style.cursor = "none"
+
+    // Add cursor: none to all elements
+    const style = document.createElement("style")
+    style.textContent = "* { cursor: none !important; }"
+    document.head.appendChild(style)
+
     const updateCursor = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
+      setIsVisible(true)
 
       const target = e.target as HTMLElement
       setIsPointer(
@@ -20,12 +30,24 @@ export function CustomCursor() {
       )
     }
 
-    window.addEventListener("mousemove", updateCursor)
+    const handleMouseEnter = () => setIsVisible(true)
+    const handleMouseLeave = () => setIsVisible(false)
+
+    document.addEventListener("mousemove", updateCursor)
+    document.addEventListener("mouseenter", handleMouseEnter)
+    document.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
-      window.removeEventListener("mousemove", updateCursor)
+      document.removeEventListener("mousemove", updateCursor)
+      document.removeEventListener("mouseenter", handleMouseEnter)
+      document.removeEventListener("mouseleave", handleMouseLeave)
+      document.body.style.cursor = "auto"
+      document.documentElement.style.cursor = "auto"
+      style.remove()
     }
   }, [])
+
+  if (!isVisible) return null
 
   return (
     <>
