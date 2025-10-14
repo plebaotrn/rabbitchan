@@ -15,7 +15,7 @@ export default function HomePage() {
             <div className="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
               <div className="relative h-24 w-24 rounded-full gradient-bg p-1 hover:scale-110 transition-transform duration-300">
                 <Image
-                  src="/anime-girl-avatar-rabbit-chan-yuriko-cute.jpg"
+                  src="/avatar.jpg"
                   alt="Rabbit Chan"
                   width={96}
                   height={96}

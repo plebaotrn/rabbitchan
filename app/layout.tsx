@@ -9,6 +9,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { CustomCursor } from "@/components/custom-cursor"
 import { ClickEffect } from "@/components/click-effect"
+import { BackgroundMusic } from "@/components/background-music"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
@@ -28,6 +29,7 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="light">
           <CustomCursor />
           <ClickEffect />
+          <BackgroundMusic />
           <div className="flex min-h-screen flex-col">
             <Suspense fallback={<div>Loading...</div>}>
               <Header />

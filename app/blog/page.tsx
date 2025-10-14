@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Calendar, Clock, ArrowRight, Heart, MessageCircle } from "lucide-react"
+import { ArrowRight, Heart, MessageCircle } from "lucide-react"
 import Image from "next/image"
 
 const blogPosts = [
@@ -127,28 +127,20 @@ export default function BlogPage() {
                 </CardHeader>
                 <CardContent className="mt-auto">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="relative h-8 w-8 rounded-full gradient-bg p-0.5">
-                      <Image
-                        src="/anime-girl-avatar-rabbit-chan-yuriko.jpg"
-                        alt="Rabbit Chan"
-                        width={32}
-                        height={32}
-                        className="rounded-full object-cover"
-                      />
+                    <div className="relative h-8 w-8 rounded-full gradient-bg p-0.5 flex-shrink-0">
+                      <div className="h-full w-full rounded-full overflow-hidden bg-background">
+                        <Image
+                          src="/anime-girl-avatar-rabbit-chan-yuriko.jpg"
+                          alt="Rabbit Chan"
+                          width={32}
+                          height={32}
+                          className="h-full w-full object-cover"
+                        />
+                      </div>
                     </div>
                     <div className="flex flex-col">
                       <span className="text-sm font-semibold">Rabbit Chan</span>
                       <span className="text-xs text-muted-foreground">@plebaotrn</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
-                      <span>{post.date}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      <span>{post.readTime}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">

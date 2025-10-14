@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "./theme-toggle"
-import { Menu, X, Sparkles } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
@@ -23,9 +23,15 @@ export function Header() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8">
         <div className="flex lg:flex-1 items-center gap-3">
           <Link href="/" className="group -m-1.5 p-1.5 flex items-center gap-3">
-            <div className="relative h-10 w-10 rounded-full gradient-bg p-0.5 group-hover:scale-110 transition-transform duration-300">
-              <div className="h-full w-full rounded-full bg-background flex items-center justify-center">
-                <Sparkles className="h-5 w-5 text-primary" />
+            <div className="relative h-10 w-10 rounded-full gradient-bg p-0.5 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
+              <div className="h-full w-full rounded-full bg-background flex items-center justify-center overflow-hidden">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rabbit-chan-logo-ASiXvvv2jzi2y0M2g3g4a07Sbr1700.jpg"
+                  alt="Rabbit Chan Logo"
+                  width={40}
+                  height={40}
+                  className="h-full w-full object-cover"
+                />
               </div>
             </div>
             <div className="flex flex-col">
@@ -67,14 +73,16 @@ export function Header() {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-          <div className="relative h-8 w-8 rounded-full gradient-bg p-0.5 hover:scale-110 transition-transform duration-300 cursor-pointer">
-            <Image
-              src="/anime-girl-avatar-rabbit-chan-yuriko.jpg"
-              alt="Rabbit Chan Avatar"
-              width={32}
-              height={32}
-              className="rounded-full object-cover"
-            />
+          <div className="relative h-8 w-8 rounded-full gradient-bg p-0.5 hover:scale-110 transition-transform duration-300 cursor-pointer flex-shrink-0">
+            <div className="h-full w-full rounded-full overflow-hidden bg-background">
+              <Image
+                src="/rabbit-chan-logo.jpg"
+                alt="Rabbit Chan Avatar"
+                width={32}
+                height={32}
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
           <ThemeToggle />
         </div>
