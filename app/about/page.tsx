@@ -1,159 +1,235 @@
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Code, Palette, Rocket, Users, Sparkles, Star, Coffee } from "lucide-react"
-import Image from "next/image"
+import { MapPin, Mail, Github, Linkedin, GraduationCap, Briefcase, Award } from "lucide-react"
+
+export const metadata = {
+  title: "About | Pham Le Bao Tran",
+  description: "Software Developer based in Melbourne. Swinburne University, Bachelor of Computer Science.",
+}
+
+const skillGroups = [
+  {
+    label: "Languages",
+    items: ["JavaScript", "TypeScript", "C#", "Kotlin", "HTML", "CSS", "SQL"],
+  },
+  {
+    label: "Frameworks",
+    items: ["Vue 3", "React", "Next.js", "Tailwind CSS", "Bootstrap 5"],
+  },
+  {
+    label: "Tools & Platforms",
+    items: ["Git", "AWS", "Supabase", "VS Code", "Android Studio", "Vite"],
+  },
+  {
+    label: "Design",
+    items: ["Figma", "Canva", "Adobe Premiere"],
+  },
+  {
+    label: "Methods",
+    items: ["OOP", "UI/UX Design", "Unit Testing", "Agile"],
+  },
+]
+
+const experience = [
+  {
+    role: "Software Trainee",
+    org: "SkillSpar",
+    period: "2024 – 2025",
+    bullets: [
+      "Developed and maintained frontend features using professional coding standards, adapting quickly to internal systems and project workflows.",
+      "Gained end-to-end understanding of software project lifecycles, participating in planning, development, and review stages.",
+    ],
+  },
+  {
+    role: "Participant",
+    org: "RMIT GenAI Hackathon 2025",
+    period: "Oct 2025",
+    bullets: [
+      "Competitive hackathon at RMIT Vietnam Campus focused on building innovative solutions using Generative AI technologies within a time-constrained environment.",
+    ],
+  },
+  {
+    role: "Media Designer",
+    org: "Chromatique Club",
+    period: "2024 – 2025",
+    bullets: [
+      "Produced high-quality visual content for social media, ensuring brand consistency across campaigns.",
+      "Managed post-production for digital assets including video editing and graphic design deliverables.",
+    ],
+  },
+  {
+    role: "Media Designer",
+    org: "YACP Journey Project",
+    period: "2022",
+    bullets: [
+      "Delivered creative design assets under tight deadlines while coordinating with a cross-functional team.",
+    ],
+  },
+]
+
+const certifications = [
+  {
+    name: "Cisco CCNA",
+    detail: "Intro to Networks & Switching, Routing, Wireless Essentials",
+  },
+  {
+    name: "Microsoft Office Specialist (MOS)",
+    detail: "Excel 2016 & Word 2016",
+  },
+]
+
+const languages = [
+  { name: "English", level: "Proficient" },
+  { name: "Vietnamese", level: "Native" },
+  { name: "Japanese", level: "Beginner" },
+]
 
 export default function AboutPage() {
   return (
-    <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-muted/30">
-        <div className="absolute inset-0 gradient-bg opacity-5" />
-        <div className="relative mx-auto max-w-4xl px-4 py-24 sm:py-32 lg:px-8">
-          <div className="text-center">
-            <div className="flex justify-center mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <div className="relative">
-                <div className="h-32 w-32 rounded-full gradient-bg p-1 hover:scale-110 transition-transform duration-300">
-                  <Image
-                    src="/anime-girl-avatar-rabbit-chan-yuriko-cute-profile.jpg"
-                    alt="Rabbit Chan - Yuriko"
-                    width={128}
-                    height={128}
-                    className="rounded-full object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-2 -right-2 h-12 w-12 rounded-full gradient-bg flex items-center justify-center animate-bounce">
-                  <Sparkles className="h-6 w-6 text-primary-foreground" />
-                </div>
+    <div className="mx-auto max-w-5xl px-6 py-20 flex flex-col gap-16">
+
+      {/* Header */}
+      <section className="flex flex-col gap-5 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="flex flex-col gap-1">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Pham Le Bao Tran
+          </h1>
+          <p className="text-lg text-muted-foreground">Software Developer</p>
+        </div>
+
+        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+          <span className="flex items-center gap-1.5">
+            <MapPin className="h-4 w-4" />
+            Footscray, VIC 3011, Australia
+          </span>
+          <a href="mailto:phamtran2082005@gmail.com" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <Mail className="h-4 w-4" />
+            phamtran2082005@gmail.com
+          </a>
+          <a href="https://github.com/plebaotrn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <Github className="h-4 w-4" />
+            github.com/plebaotrn
+          </a>
+          <a href="https://linkedin.com/in/plebaotrn" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-foreground transition-colors">
+            <Linkedin className="h-4 w-4" />
+            LinkedIn
+          </a>
+        </div>
+
+        <p className="max-w-2xl text-base text-muted-foreground leading-relaxed">
+          Aspiring Software Developer specialising in web application development and UI/UX design,
+          with hands-on experience delivering full-stack and frontend projects. Eager to contribute
+          technical skills and creative problem-solving to a dynamic team in the Australian tech industry.
+        </p>
+      </section>
+
+      <hr className="border-border" />
+
+      {/* Skills */}
+      <section className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Skills</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillGroups.map((group) => (
+            <div key={group.label} className="flex flex-col gap-2">
+              <p className="text-xs font-medium text-foreground">{group.label}</p>
+              <div className="flex flex-wrap gap-1.5">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="px-2.5 py-1 text-xs font-mono bg-muted text-muted-foreground rounded border border-border"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <span className="gradient-text text-balance">About Rabbit Chan</span>
-            </h1>
-            <div className="flex flex-col items-center gap-2 mb-6">
-              <p className="text-xl font-semibold gradient-text">plebaotrn • Yuriko</p>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Coffee className="h-4 w-4" />
-                <span>Designer & Developer</span>
-              </div>
+          ))}
+        </div>
+      </section>
+
+      <hr className="border-border" />
+
+      {/* Education */}
+      <section className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Education</h2>
+        <div className="flex items-start gap-4 p-5 border border-border rounded-lg bg-card">
+          <div className="mt-0.5 flex-shrink-0">
+            <GraduationCap className="h-5 w-5 text-primary" />
+          </div>
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <p className="text-sm font-semibold text-foreground">Swinburne University of Technology</p>
+              <p className="text-xs text-muted-foreground font-mono">May 2024 – 2027</p>
             </div>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150">
-              I'm building the future of blogging with beautiful design, smooth animations, and an exceptional user
-              experience. Welcome to my creative space!
-            </p>
+            <p className="text-sm text-muted-foreground">Bachelor of Computer Science — Software Development</p>
+            <p className="text-xs text-muted-foreground">Melbourne Hawthorn Campus · Transferred Feb 2026</p>
           </div>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 items-center">
-            <div className="animate-in fade-in slide-in-from-left duration-1000">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-6">My Mission</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                I believe that content deserves to be presented beautifully. My mission is to create a platform where I
-                can share my stories and you can enjoy them in a visually stunning environment.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I combine modern design principles with cutting-edge technology to deliver an experience that's both
-                aesthetically pleasing and highly functional.
-              </p>
-            </div>
+      <hr className="border-border" />
 
-            <div className="relative animate-in fade-in slide-in-from-right duration-1000">
-              <div className="aspect-square rounded-2xl overflow-hidden relative group">
-                <Image
-                  src="/creative-workspace-desk-setup-colorful-aesthetic.jpg"
-                  alt="Creative Workspace"
-                  width={600}
-                  height={600}
-                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 gradient-bg opacity-30 group-hover:opacity-40 transition-opacity duration-300" />
-                <div className="absolute bottom-6 left-6 right-6 bg-background/80 backdrop-blur-sm rounded-lg p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 rounded-full gradient-bg flex items-center justify-center">
-                      <Star className="h-6 w-6 text-primary-foreground fill-current" />
-                    </div>
-                    <div>
-                      <div className="font-bold gradient-text">100+ Projects</div>
-                      <div className="text-sm text-muted-foreground">Created with passion</div>
-                    </div>
+      {/* Experience */}
+      <section className="flex flex-col gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+        <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Experience</h2>
+        <div className="flex flex-col gap-4">
+          {experience.map((exp) => (
+            <div key={`${exp.org}-${exp.period}`} className="flex items-start gap-4 p-5 border border-border rounded-lg bg-card">
+              <div className="mt-0.5 flex-shrink-0">
+                <Briefcase className="h-4 w-4 text-muted-foreground" />
+              </div>
+              <div className="flex flex-col gap-2 flex-1 min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+                  <div>
+                    <span className="text-sm font-semibold text-foreground">{exp.role}</span>
+                    <span className="text-sm text-muted-foreground"> · {exp.org}</span>
                   </div>
+                  <p className="text-xs text-muted-foreground font-mono flex-shrink-0">{exp.period}</p>
                 </div>
+                <ul className="flex flex-col gap-1.5">
+                  {exp.bullets.map((b, i) => (
+                    <li key={i} className="text-sm text-muted-foreground leading-relaxed flex gap-2">
+                      <span className="text-primary mt-1.5 flex-shrink-0 text-xs">▸</span>
+                      {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+          ))}
+        </div>
+      </section>
+
+      <hr className="border-border" />
+
+      {/* Certifications & Languages */}
+      <section className="grid grid-cols-1 sm:grid-cols-2 gap-10 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-250">
+        <div className="flex flex-col gap-4">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Certifications</h2>
+          <div className="flex flex-col gap-3">
+            {certifications.map((cert) => (
+              <div key={cert.name} className="flex items-start gap-3 p-4 border border-border rounded-lg bg-card">
+                <Award className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">{cert.name}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{cert.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-4">
+          <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Languages</h2>
+          <div className="flex flex-col gap-3">
+            {languages.map((lang) => (
+              <div key={lang.name} className="flex items-center justify-between p-4 border border-border rounded-lg bg-card">
+                <p className="text-sm font-medium text-foreground">{lang.name}</p>
+                <span className="text-xs font-mono text-muted-foreground">{lang.level}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-24 bg-muted/30">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">My Values</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              The principles that guide everything I build
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 text-center">
-              <CardHeader>
-                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full gradient-bg text-primary-foreground group-hover:rotate-12 transition-transform duration-300">
-                  <Palette className="h-8 w-8" />
-                </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">Design First</CardTitle>
-                <CardDescription>Beautiful aesthetics in every pixel</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 text-center">
-              <CardHeader>
-                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full gradient-bg text-primary-foreground group-hover:rotate-12 transition-transform duration-300">
-                  <Code className="h-8 w-8" />
-                </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">Clean Code</CardTitle>
-                <CardDescription>Built with modern best practices</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 text-center">
-              <CardHeader>
-                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full gradient-bg text-primary-foreground group-hover:rotate-12 transition-transform duration-300">
-                  <Users className="h-8 w-8" />
-                </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">User Focused</CardTitle>
-                <CardDescription>Designed for the best experience</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 text-center">
-              <CardHeader>
-                <div className="mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-full gradient-bg text-primary-foreground group-hover:rotate-12 transition-transform duration-300">
-                  <Rocket className="h-8 w-8" />
-                </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">Innovation</CardTitle>
-                <CardDescription>Always pushing boundaries</CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">Built with Passion</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              This blog is built and maintained by me — plebaotrn (Yuriko). I'm passionate about creating beautiful
-              digital experiences and sharing what I learn along the way. Every project here is something I've built
-              with care, curiosity, and a lot of coffee.
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }

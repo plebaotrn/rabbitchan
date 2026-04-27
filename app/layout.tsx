@@ -7,15 +7,12 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { CustomCursor } from "@/components/custom-cursor"
-import { ClickEffect } from "@/components/click-effect"
-import { BackgroundMusic } from "@/components/background-music"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
-  title: "Rabbit Chan | plebaotrn's Project Blog",
+  title: "Pham Le Bao Tran — Software Developer",
   description:
-    "Hi, I'm plebaotrn (Yuriko) — a designer & developer sharing projects, devlogs, and creative experiments.",
+    "Software Developer specialising in web application development and UI/UX design. Based in Melbourne, Australia.",
 }
 
 export default function RootLayout({
@@ -27,9 +24,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <ThemeProvider defaultTheme="light">
-          <CustomCursor />
-          <ClickEffect />
-          <BackgroundMusic />
           <div className="flex min-h-screen flex-col">
             <Suspense fallback={<div>Loading...</div>}>
               <Header />

@@ -1,115 +1,68 @@
 import Link from "next/link"
-import { Github, Twitter, Linkedin, Mail, Heart, Sparkles, Code } from "lucide-react"
-import Image from "next/image"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-muted/30">
-      <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="relative h-10 w-10 rounded-full gradient-bg p-0.5 hover:scale-110 transition-transform duration-300">
-                <Image
-                  src="/anime-girl-avatar-rabbit-chan-yuriko-cute-profile.jpg"
-                  alt="Rabbit Chan"
-                  width={40}
-                  height={40}
-                  className="rounded-full object-cover"
-                />
-              </div>
-              <div>
-                <h3 className="text-lg font-bold gradient-text">Rabbit Chan</h3>
-                <p className="text-xs text-muted-foreground">@plebaotrn • Yuriko</p>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              A project blog where I share what I build — web apps, design systems, and creative experiments. Made with{" "}
-              <Heart className="inline h-3 w-3 text-red-500 fill-current" /> and passion.
-            </p>
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto max-w-5xl px-6 py-10">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          {/* Brand */}
+          <div className="flex flex-col gap-1.5">
+            <p className="text-sm font-semibold text-foreground">Pham Le Bao Tran</p>
+            <p className="text-xs text-muted-foreground font-mono">Software Developer · Melbourne, AU</p>
           </div>
 
-          <div>
-            <h4 className="text-sm font-semibold mb-4 flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-primary" />
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/projects"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block"
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block"
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block"
-                >
-                  About
-                </Link>
-              </li>
-            </ul>
+          {/* Nav */}
+          <div className="flex flex-wrap gap-x-8 gap-y-2">
+            {[
+              { label: "Home", href: "/" },
+              { label: "Projects", href: "/projects" },
+              { label: "Blog", href: "/blog" },
+              { label: "About", href: "/about" },
+            ].map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
 
-          <div>
-            <h4 className="text-sm font-semibold mb-4">Connect</h4>
-            <div className="flex gap-4">
-              <a
-                href="https://github.com/plebaotrn"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a
-                href="mailto:plebaotrn@gmail.com"
-                aria-label="Email"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
-            </div>
+          {/* Social */}
+          <div className="flex items-center gap-4">
+            <a
+              href="https://github.com/plebaotrn"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              <Github className="h-4 w-4" />
+            </a>
+            <a
+              href="https://linkedin.com/in/plebaotrn"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+            <a
+              href="mailto:phamtran2082005@gmail.com"
+              aria-label="Email"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+            >
+              <Mail className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
-        <div className="mt-8 border-t border-border/40 pt-8 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Rabbit Chan (plebaotrn). All rights reserved.
+        <div className="mt-8 pt-8 border-t border-border">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Pham Le Bao Tran. Built with Next.js & Tailwind CSS.
           </p>
         </div>
       </div>

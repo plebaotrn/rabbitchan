@@ -1,113 +1,114 @@
 export interface Project {
   id: number
   title: string
+  subtitle: string
   description: string
-  longDescription: string
-  image: string
+  role: string
+  bullets: string[]
   tags: string[]
   category: string
   githubUrl: string
-  demoUrl: string
+  demoUrl?: string
   status: "completed" | "in-progress" | "archived"
-  year: string
+  period: string
   featured: boolean
 }
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Rabbit Chan Blog",
+    title: "CoBunny",
+    subtitle: "Co-working Space Booking Platform",
     description:
-      "A personal project blog built with Next.js 15, React 19, and Tailwind CSS featuring gradient themes, dark mode, custom cursor, and background music.",
-    longDescription:
-      "This is the site you're looking at right now! Built from the ground up with modern web technologies to create a beautiful, interactive blogging experience. Features include a custom carrot cursor, click particle effects, a music player widget, smooth animations, and a full dark/light mode system.",
-    image: "/creative-design-workspace-colorful-gradient.jpg",
-    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui"],
-    category: "Web App",
-    githubUrl: "https://github.com/plebaotrn/rabbitchan",
-    demoUrl: "/",
+      "A full-stack co-working space booking platform with complete CRUD operations and persistent cloud data storage.",
+    role: "Full-stack Developer",
+    bullets: [
+      "Architected the booking flow end-to-end, from UI design to backend integration",
+      "Designed responsive UI screens in Figma before implementation",
+      "Integrated real-time Supabase backend for persistent cloud storage",
+    ],
+    tags: ["Vue 3", "Bootstrap 5", "Vite", "Supabase"],
+    category: "Full Stack",
+    githubUrl: "https://github.com/plebaotrn",
     status: "completed",
-    year: "2024",
+    period: "Nov – Dec 2025",
     featured: true,
   },
   {
     id: 2,
-    title: "Anime Tracker",
+    title: "Happier",
+    subtitle: "Habit Tracker Mobile App",
     description:
-      "A full-stack anime watchlist app to track series, progress, and ratings with a clean, minimal UI inspired by MyAnimeList.",
-    longDescription:
-      "An application for tracking anime series with features like episode progress tracking, custom ratings, watchlist management, and seasonal charts. Integrates with the Jikan API to pull anime metadata automatically.",
-    image: "/animation-motion-design-colorful.jpg",
-    tags: ["React", "Node.js", "MongoDB", "Jikan API"],
-    category: "Full Stack",
+      "An Android mobile application for building positive daily routines, tracking habit streaks, and visualising personal progress over time.",
+    role: "Mobile Developer",
+    bullets: [
+      "Designed all UI screens with a focus on clarity and ease of daily use",
+      "Implemented local SQLite database for offline-first habit tracking",
+      "Applied LiveData with ViewModel for reactive, lifecycle-aware state management",
+    ],
+    tags: ["Kotlin", "Android Studio", "SQLite", "LiveData"],
+    category: "Mobile",
     githubUrl: "https://github.com/plebaotrn",
-    demoUrl: "#",
-    status: "in-progress",
-    year: "2024",
+    status: "completed",
+    period: "Nov – Dec 2025",
     featured: true,
   },
   {
     id: 3,
-    title: "Gradient Design System",
+    title: "TradePro",
+    subtitle: "Blockchain Trading Platform",
     description:
-      "A reusable component library built on Tailwind CSS with a blue-pink gradient design language, dark mode support, and full TypeScript types.",
-    longDescription:
-      "A custom design system extracted from personal projects, offering a consistent gradient-based visual identity. Includes buttons, cards, badges, forms, and navigation components — all with built-in dark mode and accessibility support.",
-    image: "/gradient-colors-abstract-design.jpg",
-    tags: ["TypeScript", "Tailwind CSS", "shadcn/ui", "Storybook"],
-    category: "Design System",
+      "A prototype blockchain asset trading platform with a data analytics dashboard.",
+    role: "Frontend Developer",
+    bullets: [
+      "Led UI/UX design across all pages, establishing the visual language for the product",
+      "Built search, filter, and sorting system for asset listings",
+      "Defined the frontend component architecture for the team",
+    ],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase", "Solidity", "Hardhat"],
+    category: "Web3 / Frontend",
     githubUrl: "https://github.com/plebaotrn",
-    demoUrl: "#",
     status: "completed",
-    year: "2024",
+    period: "Jan – Mar 2025",
     featured: true,
   },
   {
     id: 4,
-    title: "Responsive Portfolio",
+    title: "MConnect",
+    subtitle: "Professional Networking Platform",
     description:
-      "A minimal, fast personal portfolio website showcasing work, skills, and contact information with fluid responsive layouts.",
-    longDescription:
-      "A clean, single-page portfolio designed for maximum performance. Uses Next.js static generation for near-instant page loads, with subtle entrance animations and a mobile-first responsive grid. Scored 98+ on Lighthouse across all categories.",
-    image: "/responsive-design-mobile-desktop.jpg",
-    tags: ["Next.js", "CSS Grid", "Framer Motion"],
-    category: "Portfolio",
+      "A fully functional professional social networking platform with user profiles, dynamic search, and authentication.",
+    role: "Frontend Developer",
+    bullets: [
+      "Designed and implemented the full UI/UX from scratch",
+      "Built a dynamic search and filter system for user profiles",
+      "Coded the complete login and authentication flow",
+    ],
+    tags: ["Vanilla JavaScript", "HTML", "CSS"],
+    category: "Frontend",
     githubUrl: "https://github.com/plebaotrn",
-    demoUrl: "#",
     status: "completed",
-    year: "2023",
+    period: "May – Jul 2025",
     featured: false,
   },
   {
     id: 5,
-    title: "Dark Mode UI Kit",
+    title: "Rabbit Chan Blog",
+    subtitle: "Personal Project Blog",
     description:
-      "A Figma & code UI kit focused on dark interface design with carefully crafted color ramps, elevation tokens, and component states.",
-    longDescription:
-      "A comprehensive dark mode design kit created to solve the most common pitfalls of dark UI — harsh black backgrounds, invisible shadows, and low-contrast text. Ships with a Figma library and matching React components with CSS variable tokens.",
-    image: "/dark-mode-interface-design.jpg",
-    tags: ["Figma", "React", "CSS Variables", "Design Tokens"],
-    category: "Design",
-    githubUrl: "https://github.com/plebaotrn",
-    demoUrl: "#",
-    status: "completed",
-    year: "2023",
-    featured: false,
-  },
-  {
-    id: 6,
-    title: "Typography Explorer",
-    description:
-      "An interactive tool for exploring font pairings, type scales, and modular spacing — designed for designers and developers.",
-    longDescription:
-      "A browser-based tool that lets you experiment with Google Fonts pairings, modular type scales, and line-height/spacing values in real time. Export your configuration as CSS variables or a Tailwind config snippet to drop straight into your project.",
-    image: "/typography-fonts-design.jpg",
-    tags: ["React", "Google Fonts API", "CSS", "TypeScript"],
-    category: "Tool",
-    githubUrl: "https://github.com/plebaotrn",
-    demoUrl: "#",
-    status: "archived",
-    year: "2023",
+      "This site — a personal project blog built with Next.js 15 and Tailwind CSS to showcase projects and share devlogs.",
+    role: "Full-stack Developer",
+    bullets: [
+      "Designed and built end-to-end with Next.js App Router and TypeScript",
+      "Implemented dark/light mode theming with custom CSS design tokens",
+      "Deployed on Vercel with static generation for fast page loads",
+    ],
+    tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    category: "Full Stack",
+    githubUrl: "https://github.com/plebaotrn/rabbitchan",
+    demoUrl: "/",
+    status: "in-progress",
+    period: "2024 – Present",
     featured: false,
   },
 ]
