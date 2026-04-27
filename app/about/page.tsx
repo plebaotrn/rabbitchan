@@ -91,9 +91,9 @@ export default function AboutPage() {
       <section className="py-24 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">Our Values</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">My Values</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              The principles that guide everything we do
+              The principles that guide everything I build
             </p>
           </div>
 
@@ -147,8 +147,9 @@ export default function AboutPage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">Built with Passion</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              BlogSpace is crafted by a team of designers and developers who are passionate about creating exceptional
-              digital experiences. We believe in the power of good design to make content more engaging and accessible.
+              This blog is built and maintained by me — plebaotrn (Yuriko). I'm passionate about creating beautiful
+              digital experiences and sharing what I learn along the way. Every project here is something I've built
+              with care, curiosity, and a lot of coffee.
             </p>
           </div>
         </div>

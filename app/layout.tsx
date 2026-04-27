@@ -13,9 +13,9 @@ import { BackgroundMusic } from "@/components/background-music"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
-  title: "BlogSpace - Modern Blog Platform",
-  description: "A beautiful blog with gradient themes and smooth animations",
-  generator: "v0.app",
+  title: "Rabbit Chan | plebaotrn's Project Blog",
+  description:
+    "Hi, I'm plebaotrn (Yuriko) — a designer & developer sharing projects, devlogs, and creative experiments.",
 }
 
 export default function RootLayout({

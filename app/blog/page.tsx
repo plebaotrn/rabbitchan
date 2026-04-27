@@ -1,80 +1,14 @@
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Heart, MessageCircle } from "lucide-react"
+import { ArrowRight, Clock, Heart, MessageCircle } from "lucide-react"
 import Image from "next/image"
+import { blogPosts } from "@/lib/blog-data"
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Getting Started with Modern Web Design",
-    description:
-      "Learn the fundamentals of creating beautiful, responsive websites with modern design principles and best practices.",
-    date: "March 15, 2024",
-    readTime: "5 min read",
-    category: "Design",
-    image: "/modern-web-design-colorful-gradient.jpg",
-    likes: 42,
-    comments: 8,
-  },
-  {
-    id: 2,
-    title: "The Power of Gradient Themes",
-    description:
-      "Discover how gradient color schemes can transform your user interface and create stunning visual experiences.",
-    date: "March 12, 2024",
-    readTime: "4 min read",
-    category: "UI/UX",
-    image: "/gradient-colors-abstract-design.jpg",
-    likes: 38,
-    comments: 12,
-  },
-  {
-    id: 3,
-    title: "Smooth Animations in Web Development",
-    description:
-      "Master the art of creating delightful micro-interactions and animations that enhance user engagement.",
-    date: "March 10, 2024",
-    readTime: "6 min read",
-    category: "Development",
-    image: "/animation-motion-design-colorful.jpg",
-    likes: 56,
-    comments: 15,
-  },
-  {
-    id: 4,
-    title: "Building Responsive Layouts",
-    description: "A comprehensive guide to creating layouts that work perfectly across all devices and screen sizes.",
-    date: "March 8, 2024",
-    readTime: "7 min read",
-    category: "Development",
-    image: "/responsive-design-mobile-desktop.jpg",
-    likes: 45,
-    comments: 10,
-  },
-  {
-    id: 5,
-    title: "Dark Mode Best Practices",
-    description: "Implementing dark mode the right way with proper color contrast and accessibility considerations.",
-    date: "March 5, 2024",
-    readTime: "5 min read",
-    category: "Design",
-    image: "/dark-mode-interface-design.jpg",
-    likes: 51,
-    comments: 9,
-  },
-  {
-    id: 6,
-    title: "Typography in Modern Design",
-    description: "Understanding how to choose and use fonts effectively to create hierarchy and improve readability.",
-    date: "March 1, 2024",
-    readTime: "4 min read",
-    category: "Design",
-    image: "/typography-fonts-design.jpg",
-    likes: 33,
-    comments: 6,
-  },
-]
+export const metadata = {
+  title: "Blog | Rabbit Chan",
+  description: "Insights, tutorials, and devlogs about design, web development, and creative projects by plebaotrn.",
+}
 
 export default function BlogPage() {
   return (
@@ -85,10 +19,10 @@ export default function BlogPage() {
         <div className="relative mx-auto max-w-7xl px-4 py-24 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <span className="gradient-text text-balance">Our Blog</span>
+              <span className="gradient-text text-balance">Blog</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150">
-              Insights, tutorials, and stories about design, development, and everything in between.
+              Devlogs, tutorials, and stories from my journey through design and development.
             </p>
           </div>
         </div>
@@ -101,7 +35,7 @@ export default function BlogPage() {
             {blogPosts.map((post, index) => (
               <Card
                 key={post.id}
-                className="group hover:scale-105 hover:shadow-xl transition-all duration-300 gradient-border flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4"
+                className="group hover:scale-[1.02] hover:shadow-xl transition-all duration-300 gradient-border flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="relative h-48 w-full overflow-hidden">
@@ -143,14 +77,20 @@ export default function BlogPage() {
                       <span className="text-xs text-muted-foreground">@plebaotrn</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1 hover:text-primary transition-colors duration-300 cursor-pointer">
-                      <Heart className="h-4 w-4" />
-                      <span>{post.likes}</span>
+                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-1 hover:text-primary transition-colors duration-300 cursor-pointer">
+                        <Heart className="h-4 w-4" />
+                        <span>{post.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1 hover:text-primary transition-colors duration-300 cursor-pointer">
+                        <MessageCircle className="h-4 w-4" />
+                        <span>{post.comments}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-1 hover:text-primary transition-colors duration-300 cursor-pointer">
-                      <MessageCircle className="h-4 w-4" />
-                      <span>{post.comments}</span>
+                    <div className="flex items-center gap-1 text-xs">
+                      <Clock className="h-3.5 w-3.5" />
+                      <span>{post.readTime}</span>
                     </div>
                   </div>
                   <Button
@@ -176,9 +116,9 @@ export default function BlogPage() {
           <Card className="gradient-bg text-primary-foreground overflow-hidden relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 group-hover:to-black/30 transition-all duration-500" />
             <CardContent className="relative p-12 text-center">
-              <h2 className="text-3xl font-bold tracking-tight mb-4 text-balance">Stay Updated</h2>
+              <h2 className="text-3xl font-bold tracking-tight mb-4 text-balance">Stay in the Loop</h2>
               <p className="text-lg mb-8 text-primary-foreground/90 max-w-2xl mx-auto leading-relaxed">
-                Subscribe to our newsletter for the latest articles and updates
+                Get notified when I publish new devlogs, tutorials, or project updates.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <input

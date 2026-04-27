@@ -3,15 +3,16 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "./theme-toggle"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Github } from "lucide-react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
   { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about" },
 ]
 
 export function Header() {
@@ -26,7 +27,7 @@ export function Header() {
             <div className="relative h-10 w-10 rounded-full gradient-bg p-0.5 group-hover:scale-110 transition-transform duration-300 flex-shrink-0">
               <div className="h-full w-full rounded-full bg-background flex items-center justify-center overflow-hidden">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/rabbit-chan-logo-ASiXvvv2jzi2y0M2g3g4a07Sbr1700.jpg"
+                  src="/rabbit-chan-logo.jpg"
                   alt="Rabbit Chan Logo"
                   width={40}
                   height={40}
@@ -72,18 +73,22 @@ export function Header() {
           ))}
         </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-4">
-          <div className="relative h-8 w-8 rounded-full gradient-bg p-0.5 hover:scale-110 transition-transform duration-300 cursor-pointer flex-shrink-0">
-            <div className="h-full w-full rounded-full overflow-hidden bg-background">
-              <Image
-                src="/rabbit-chan-logo.jpg"
-                alt="Rabbit Chan Avatar"
-                width={32}
-                height={32}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-3">
+          <Button
+            asChild
+            variant="ghost"
+            size="icon"
+            className="hover:scale-110 transition-transform duration-300"
+          >
+            <a
+              href="https://github.com/plebaotrn"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub profile"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+          </Button>
           <ThemeToggle />
         </div>
       </nav>
@@ -106,6 +111,16 @@ export function Header() {
                 {item.name}
               </Link>
             ))}
+            <a
+              href="https://github.com/plebaotrn"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-base font-medium text-foreground/60 hover:bg-muted hover:text-foreground transition-all duration-300"
+            >
+              <Github className="h-5 w-5" />
+              GitHub
+            </a>
           </div>
         </div>
       )}

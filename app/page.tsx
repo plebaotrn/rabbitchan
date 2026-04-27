@@ -1,10 +1,14 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowRight, Sparkles, Heart, Pen, BookOpen, Star } from "lucide-react"
+import { ArrowRight, Sparkles, Heart, Pen, BookOpen, Star, Rocket, Github, Code } from "lucide-react"
 import Image from "next/image"
+import { featuredProjects } from "@/lib/projects-data"
+import { blogPosts } from "@/lib/blog-data"
 
 export default function HomePage() {
+  const latestPosts = blogPosts.slice(0, 3)
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -27,12 +31,11 @@ export default function HomePage() {
               </div>
             </div>
             <h1 className="text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-              <span className="gradient-text text-balance">Welcome to Rabbit Chan's Blog</span>
+              <span className="gradient-text text-balance">Hey, I'm plebaotrn!</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-150">
-              Hi! I'm <span className="font-semibold gradient-text">plebaotrn</span>, also known as{" "}
-              <span className="font-semibold gradient-text">Yuriko</span>. Discover my stories, thoughts, and creative
-              journey through design and development.
+              Also known as <span className="font-semibold gradient-text">Yuriko</span> — a designer & developer.
+              This is where I share the projects I build, the things I learn, and the ideas I care about.
             </p>
             <div className="mt-10 flex items-center justify-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-300">
               <Button
@@ -40,8 +43,9 @@ export default function HomePage() {
                 size="lg"
                 className="gradient-bg text-primary-foreground hover:scale-105 hover:shadow-lg transition-all duration-300 group"
               >
-                <Link href="/blog">
-                  Start Reading
+                <Link href="/projects">
+                  <Rocket className="mr-2 h-4 w-4" />
+                  See My Projects
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
                 </Link>
               </Button>
@@ -51,20 +55,201 @@ export default function HomePage() {
                 size="lg"
                 className="hover:scale-105 hover:border-primary transition-all duration-300 bg-transparent"
               >
-                <Link href="/about">Learn More</Link>
+                <Link href="/blog">Read the Blog</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Stats Bar */}
+      <section className="py-8 bg-muted/30 border-y border-border/40">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p className="text-3xl font-bold gradient-text">6+</p>
+              <p className="text-sm text-muted-foreground">Projects shipped</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold gradient-text">6</p>
+              <p className="text-sm text-muted-foreground">Blog posts</p>
+            </div>
+            <div>
+              <p className="text-3xl font-bold gradient-text">∞</p>
+              <p className="text-sm text-muted-foreground">Ideas in progress</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Projects */}
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="h-8 w-1 rounded-full gradient-bg" />
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                  Featured <span className="gradient-text">Projects</span>
+                </h2>
+              </div>
+              <p className="text-muted-foreground ml-4 pl-3">Things I've built and shipped</p>
+            </div>
+            <Button
+              asChild
+              variant="ghost"
+              className="hidden sm:flex hover:gradient-bg hover:text-primary-foreground transition-all duration-300"
+            >
+              <Link href="/projects">
+                All projects <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {featuredProjects.map((project, index) => (
+              <Card
+                key={project.id}
+                className="group hover:scale-[1.02] hover:shadow-xl transition-all duration-300 gradient-border overflow-hidden animate-in fade-in slide-in-from-bottom-4"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative h-40 w-full overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 gradient-bg opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-1 text-xs font-semibold rounded-full gradient-bg text-primary-foreground">
+                      {project.category}
+                    </span>
+                  </div>
+                </div>
+                <CardHeader className="pb-2">
+                  <CardTitle className="group-hover:gradient-text transition-all duration-300 text-base">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="leading-relaxed text-sm line-clamp-2">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="px-2 py-0.5 rounded text-xs bg-muted text-muted-foreground">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-2">
+                    <Button asChild size="sm" variant="ghost" className="h-8 px-3 text-xs flex-1">
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github className="mr-1.5 h-3.5 w-3.5" />
+                        Code
+                      </a>
+                    </Button>
+                    <Button asChild size="sm" className="h-8 px-3 text-xs flex-1 gradient-bg text-primary-foreground">
+                      <Link href="/projects">Details</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-8 sm:hidden text-center">
+            <Button asChild variant="outline" className="hover:gradient-bg hover:text-primary-foreground transition-all duration-300">
+              <Link href="/projects">
+                All projects <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Latest Blog Posts */}
       <section className="py-24 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="h-8 w-1 rounded-full gradient-bg" />
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                  Latest <span className="gradient-text">Posts</span>
+                </h2>
+              </div>
+              <p className="text-muted-foreground ml-4 pl-3">Devlogs, tutorials, and more</p>
+            </div>
+            <Button
+              asChild
+              variant="ghost"
+              className="hidden sm:flex hover:gradient-bg hover:text-primary-foreground transition-all duration-300"
+            >
+              <Link href="/blog">
+                All posts <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {latestPosts.map((post, index) => (
+              <Card
+                key={post.id}
+                className="group hover:scale-[1.02] hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative h-40 w-full overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    width={600}
+                    height={400}
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 gradient-bg opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
+                  <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-1 text-xs font-semibold rounded-full gradient-bg text-primary-foreground">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <CardHeader className="pb-2">
+                  <CardTitle className="group-hover:gradient-text transition-all duration-300 text-base text-balance">
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="text-sm leading-relaxed line-clamp-2">
+                    {post.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="mt-auto">
+                  <Button
+                    asChild
+                    variant="ghost"
+                    size="sm"
+                    className="w-full group/btn hover:gradient-bg hover:text-primary-foreground transition-all duration-300"
+                  >
+                    <Link href={`/blog/${post.id}`}>
+                      Read More
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* About / Features */}
+      <section className="py-24">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">Why Choose My Blog?</h2>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">What You'll Find Here</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Experience the perfect blend of aesthetics and functionality
+              A mix of projects, tutorials, and personal thoughts on design and development
             </p>
           </div>
 
@@ -72,12 +257,12 @@ export default function HomePage() {
             <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 gradient-border">
               <CardHeader>
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg gradient-bg text-primary-foreground group-hover:rotate-12 transition-transform duration-300">
-                  <Sparkles className="h-6 w-6" />
+                  <Rocket className="h-6 w-6" />
                 </div>
                 <CardTitle className="group-hover:gradient-text transition-all duration-300">
-                  Beautiful Design
+                  Project Showcases
                 </CardTitle>
-                <CardDescription>Stunning gradient themes with smooth light/dark mode transitions</CardDescription>
+                <CardDescription>Detailed writeups of apps, tools, and experiments I've built</CardDescription>
               </CardHeader>
             </Card>
 
@@ -87,9 +272,9 @@ export default function HomePage() {
                   <Pen className="h-6 w-6" />
                 </div>
                 <CardTitle className="group-hover:gradient-text transition-all duration-300">
-                  Creative Content
+                  Devlogs & Tutorials
                 </CardTitle>
-                <CardDescription>Original stories and insights from my creative journey</CardDescription>
+                <CardDescription>How I build things — the process, the challenges, and the lessons</CardDescription>
               </CardHeader>
             </Card>
 
@@ -98,67 +283,8 @@ export default function HomePage() {
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg gradient-bg text-primary-foreground group-hover:rotate-12 transition-transform duration-300">
                   <Heart className="h-6 w-6" />
                 </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">Made with Love</CardTitle>
-                <CardDescription>Every post crafted with passion and attention to detail</CardDescription>
-              </CardHeader>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl gradient-text mb-4">Featured Content</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Explore my latest creative works and projects
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src="/creative-design-workspace-colorful-gradient.jpg"
-                  alt="Design Work"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 gradient-bg opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-              </div>
-              <CardHeader>
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold gradient-text">Design</span>
-                </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">
-                  Creative Design Projects
-                </CardTitle>
-                <CardDescription>Exploring the intersection of art and technology</CardDescription>
-              </CardHeader>
-            </Card>
-
-            <Card className="group hover:scale-105 hover:shadow-xl transition-all duration-300 overflow-hidden">
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src="/coding-development-programming-colorful.jpg"
-                  alt="Development Work"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 gradient-bg opacity-20 group-hover:opacity-30 transition-opacity duration-300" />
-              </div>
-              <CardHeader>
-                <div className="flex items-center gap-2 mb-2">
-                  <BookOpen className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-semibold gradient-text">Development</span>
-                </div>
-                <CardTitle className="group-hover:gradient-text transition-all duration-300">
-                  Web Development Journey
-                </CardTitle>
-                <CardDescription>Building beautiful and functional web experiences</CardDescription>
+                <CardTitle className="group-hover:gradient-text transition-all duration-300">Design & Craft</CardTitle>
+                <CardDescription>Thoughts on beautiful UI, typography, animation, and color</CardDescription>
               </CardHeader>
             </Card>
           </div>
@@ -166,28 +292,42 @@ export default function HomePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24">
+      <section className="py-24 bg-muted/30">
         <div className="mx-auto max-w-7xl px-4 lg:px-8">
           <Card className="gradient-bg text-primary-foreground overflow-hidden relative group">
             <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 group-hover:to-black/30 transition-all duration-500" />
             <CardContent className="relative p-12 text-center">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 text-balance">
-                Ready to Start Your Journey?
+                Want to See What I've Built?
               </h2>
               <p className="text-lg mb-8 text-primary-foreground/90 max-w-2xl mx-auto leading-relaxed">
-                Join our community of writers and readers today
+                Head to my Projects page for the full showcase, or browse the blog for deeper dives.
               </p>
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-                className="hover:scale-105 hover:shadow-lg transition-all duration-300 group/btn"
-              >
-                <Link href="/blog">
-                  Explore Blog Posts
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  variant="secondary"
+                  className="hover:scale-105 hover:shadow-lg transition-all duration-300 group/btn"
+                >
+                  <Link href="/projects">
+                    <Rocket className="mr-2 h-4 w-4" />
+                    Browse Projects
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 hover:scale-105 transition-all duration-300"
+                >
+                  <a href="https://github.com/plebaotrn" target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4" />
+                    GitHub
+                  </a>
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>

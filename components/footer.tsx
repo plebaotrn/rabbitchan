@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Github, Twitter, Linkedin, Mail, Heart, Sparkles } from "lucide-react"
+import { Github, Twitter, Linkedin, Mail, Heart, Sparkles, Code } from "lucide-react"
 import Image from "next/image"
 
 export function Footer() {
@@ -24,7 +24,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              A modern blog platform with beautiful gradients and smooth animations. Built with{" "}
+              A project blog where I share what I build — web apps, design systems, and creative experiments. Made with{" "}
               <Heart className="inline h-3 w-3 text-red-500 fill-current" /> and passion.
             </p>
           </div>
@@ -45,10 +45,10 @@ export function Footer() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/projects"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block"
                 >
-                  About
+                  Projects
                 </Link>
               </li>
               <li>
@@ -59,6 +59,14 @@ export function Footer() {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300 hover:translate-x-1 inline-block"
+                >
+                  About
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -66,25 +74,31 @@ export function Footer() {
             <h4 className="text-sm font-semibold mb-4">Connect</h4>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://github.com/plebaotrn"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
                 className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               >
                 <Github className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-muted-foreground hover:text-secondary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+                aria-label="Twitter"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a
                 href="#"
-                className="text-muted-foreground hover:text-accent transition-all duration-300 hover:scale-125 hover:-translate-y-1"
+                aria-label="LinkedIn"
+                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="mailto:plebaotrn@gmail.com"
+                aria-label="Email"
                 className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-125 hover:-translate-y-1"
               >
                 <Mail className="h-5 w-5" />
