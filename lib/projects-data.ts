@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description:
       "A full-stack co-working space booking platform with complete CRUD operations and persistent cloud data storage.",
     role: "Full-stack Developer",
-    team: true,
+    team: false,
     bullets: [
       "Architected the booking flow end-to-end, from UI design to backend integration",
       "Designed responsive UI screens in Figma before implementation",

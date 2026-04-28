@@ -26,12 +26,12 @@ export default function RootLayout({
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <ThemeProvider defaultTheme="light">
           <BackgroundMusic />
-          <div className="flex min-h-screen flex-col">
-            <Suspense fallback={<div>Loading...</div>}>
+          <div className="flex min-h-screen flex-col page-enter">
+            <Suspense fallback={null}>
               <Header />
             </Suspense>
             <main className="flex-1">{children}</main>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={null}>
               <Footer />
             </Suspense>
           </div>

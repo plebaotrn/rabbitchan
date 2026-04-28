@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { ThemeToggle } from "./theme-toggle"
 import { Menu, X, Github } from "lucide-react"
@@ -22,9 +23,14 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link href="/" className="flex flex-col leading-tight">
-          <span className="text-sm font-semibold tracking-tight text-foreground">Pham Le Bao Tran</span>
-          <span className="text-xs text-muted-foreground font-mono">@plebaotrn</span>
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <div className="relative h-8 w-8 rounded-full overflow-hidden ring-2 ring-border group-hover:ring-primary transition-all duration-200 flex-shrink-0">
+            <Image src="/cinnamon.jpg" alt="Rabbit Chan" fill className="object-cover" priority />
+          </div>
+          <div className="flex flex-col leading-tight">
+            <span className="text-sm font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">Pham Le Bao Tran</span>
+            <span className="text-xs text-muted-foreground font-mono">@plebaotrn</span>
+          </div>
         </Link>
 
         {/* Mobile controls */}
